@@ -1,0 +1,28 @@
+{
+	"name": "zealbyte/message-bundle",
+	"description": "ZealByte message bundle for Symfony 4",
+	"keywords": [],
+	"homepage": "https://zealbyte.com",
+	"license": "MIT",
+	"type": "symfony-bundle",
+	"authors": [
+		{
+			"name": "Dustin Martella",
+			"email": "dustin.martella@zealbyte.com"
+		}
+	],
+	"require": {
+		"php": ">=7.1.0",
+		"symfony/framework-bundle": "^4.0",
+		"zealbyte/message": "^0.1"
+	},
+	"suggest": {
+		"twig/twig": "Show messages to web users."
+	},
+	"autoload": {
+		"psr-4": {
+			"ZealByte\\Bundle\\MessageBundle\\": "lib"
+		}
+	},
+	"minimum-stability": "dev"
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+	<parameters>
+		<parameter key="menu.renderer.list.options" type="collection"></parameter>
+	</parameters>
+
+	<services>
+		<defaults public="false" />
+
+		<service id="ZealByte\Message\Provider\MessageProvider" public="false">
+			<argument type="service" id="event_dispatcher" />
+		</service>
+		<service id="messages" alias="ZealByte\Message\Provider\MessageProvider" public="true" />
+
+		<service id="ZealByte\Message\EventListener\MessageSubscriber" public="false">
+			<argument type="service" id="messages" />
+			<argument type="service" id="security.token_storage" on-invalid="null" />
+			<tag name="kernel.event_subscriber" />
+		</service>
+
+		<service id="ZealByte\Message\EventListener\FlashMessageSubscriber" public="false">
+			<argument type="service" id="session" />
+			<tag name="kernel.event_subscriber" />
+		</service>
+
+	</services>
+</container>
